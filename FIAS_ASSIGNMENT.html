@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Boys and Girls</title>
+  <style>
+      
+    .button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+      text-align: center;
+    }
+    body {
+      background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+    }
+    
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 10% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  
+    .output {
+      margin-top: 40px;
+      text-align: center;
+      border-radius: 100;
+    }
+    
+    .additional-output {
+      margin-top: 70px;
+      text-align: left;
+    }
+    
+    .output img,
+    .additional-output img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <button class="button" id="boysButton">Boys</button>
+  <button class="button" id="girlsButton">Girls</button>
+  
+  <div class="output" id="output"></div>
+  <div class="additional-output" id="additionalOutput"></div>
+  
+  <script>
+    var boysImages = [
+      "Jerico.jpg",
+      "Michael.jpeg",
+      "Leode.jpg",
+      "Angelo.jpg",
+      "Aldrin.jpg"
+    ];
+    
+    var girlsImages = [
+      "Jay ann.JPG",
+      "Mary ann.jpg",
+      "Rosgie.jpg",
+      "Je ann.jpg",
+      "Joana.jpeg"
+    ];
+    
+    var outputDiv = document.getElementById("output");
+    var additionalOutputDiv = document.getElementById("additionalOutput");
+    var boysButton = document.getElementById("boysButton");
+    var girlsButton = document.getElementById("girlsButton");
+    
+    var currentBoyIndex = 0;
+    var currentGirlIndex = 0;
+    
+    boysButton.addEventListener("click", function() {
+      if (currentBoyIndex < boysImages.length) {
+        var image = document.createElement("img");
+        image.src = boysImages[currentBoyIndex];
+        outputDiv.appendChild(image);
+        
+        var additionalImage = document.createElement("img");
+        additionalImage.src = boysImages[currentBoyIndex];
+        additionalOutputDiv.appendChild(additionalImage);
+        
+        currentBoyIndex++;
+        
+        if (currentBoyIndex === boysImages.length && currentGirlIndex === girlsImages.length) {
+          clearImages();
+        }
+      }
+    });
+    
+    girlsButton.addEventListener("click", function() {
+      if (currentGirlIndex < girlsImages.length) {
+        var image = document.createElement("img");
+        image.src = girlsImages[currentGirlIndex];
+        outputDiv.appendChild(image);
+        
+        var additionalImage = document.createElement("img");
+        additionalImage.src = girlsImages[currentGirlIndex];
+        additionalOutputDiv.appendChild(additionalImage);
+        
+        currentGirlIndex++;
+        
+        if (currentBoyIndex === boysImages.length && currentGirlIndex === girlsImages.length) {
+          clearImages();
+        }
+      }
+    });
+    
+    function clearImages() {
+      outputDiv.innerHTML = "";
+      additionalOutputDiv.innerHTML = "";
+      currentBoyIndex = 0;
+      currentGirlIndex = 0;
+    }
+  </script>
+</body>
+</html>
+ 
